@@ -1,0 +1,7 @@
+Esse projeto tem o objetivo de Ler os arquivos do BCA e Marcar as matérias que sejam de responsabilidade do GAP-GL,
+ou seja, das OMs Apoiadas. 
+A principio para identificar esss matérias esse programa Marca todas as ocorrências das palavras das OMs Apoiadas pelo GAP-GL. Isso facilita a leitura do BCA que exige que essas palavras sejam buscadas durante a leitura.
+
+MODO DE FUNCIONAMENTO:
+1° - COLAR dentro dessa pasta o arquivo que deseja ser lido E ALTERAR o nome dele para "bca_do_dia.pdf" (checar a necessidade de inserir ".pdf" de acordo com as propriedades de extensão de arquivos configuradas nas opções de pasta do Windows.)
+2° - RODAR o executavél "MarcaBCA.exe" (dois cliques nele). Aparecerá uma tela preta com a execução do programa, e após isso será gerado o arquivo "BcaMarcado.pdf" que foi lido e marcado.

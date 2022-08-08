@@ -1,4 +1,5 @@
 #FUNÇÃO LÊ O BCA E MOSTRA O RESULTADO DA BUSCA NA TELA
+#C:\Program Files\Python310\Lib\site-packages\PyPDF3
 
 import PyPDF3
 import fitz  #pip install PyMuPDF
@@ -7,13 +8,23 @@ import requests
 
 
 OMs=[
-    'GAP GL','PAMA GL','BAGL','CMRJ','1 CJM',
-    'CEMAL','2/2 GT','CCA RJ','PAGL','1 GCC',
-    'MTAB','DIRAP','DIRSA','CGABEG','BAGL_ANTIGA',
-    'CBNB','SERIPA III','ESG','PAMB RJ','DTCEA-GL',
-    '1/2 GT','BINFAE GL','1/1 GT','LAQFA','CTLA','GAP GL',
-    'DT-INFRA RJ','ALA 11','CIMAER','CAE','COPE-S','GSD-GL',
-    'MTAB-BOLIVIA','HFAG']
+    'GAP GL','GRUPAMENTO DE APOIO DO GALEÃO','PAMA GL','PARQUE DE MATERIAL AERONÁUTICO DO GALEÃO',
+    'BAGL','BASE AÉREA DO GALEÃO','CMRJ','COLÉGIO MILITAR DO RIO DE JANEIRO',
+    '1 CJM','PRIMEIRA CIRCUNSCRIÇÃO JUDICIÁRIA MILITAR','CEMAL','CENTRO DE MEDICINA AEROESPACIAL',
+    '2/2 GT','SEGUNDO ESQUADRÃO DO SEGUNDO GRUPO DE TRANSPORTE','CCA RJ','CENTRO DE COMPUTAÇÃO DA AERONÁUTICA DO RIO DE JANEIRO',
+    'PAGL','PREFEITURA DE AERONÁUTICA DO GALEÃO','1 GCC','PRIMEIRO GRUPO DE COMUNICAÇÕES E CONTROLE',
+    'MTAB','MISSÃO TÉCNICA AERONÁUTICA BRASILEIRA NA BOLÍVIA','DIRAP','DIRETORIA DE ADMINISTRAÇÃO DO PESSOAL',
+    'DIRSA','DIRETORIA DE SAÚDE DA AERONÁUTICA','CGABEG','CASA GERONTOLÓGICA DE AERONÁUTICA BRIGADEIRO EDUARDO GOMES',
+    'BAGL_ANTIGA','CBNB','COLEGIO BRIGADEIRO NEWTON BRAGA',
+    'SERIPA III','TERCEIRO SERVIÇO REGIONAL DE INVESTIGAÇÃO E PREVENÇÃO DE ACIDENTES AERONÁUTICOS',
+    'ESG','ESCOLA SUPERIOR DE GUERRA','PAMB RJ','PARQUE DE MATERIAL BÉLICO DA AERONÁUTICA DO RIO DE JANEIRO',
+    'DTCEA-GL','DESTACAMENTO DE CONTROLE DO ESPAÇO AÉREO DO GALEÃO','1/2 GT','PRIMEIRO ESQUADRÃO DO SEGUNDO GRUPO DE TRANSPORTE',
+    'BINFAE GL','BATALHÃO DE INFANTARIA DA AERONÁUTICA ESPECIAL DO GALEÃO',
+    '1/1 GT','PRIMEIRO ESQUADRÃO DO PRIMEIRO GRUPO DE TRANSPORTE','LAQFA','LABORATÓRIO QUÍMICO-FARMACÊUTICO DA AERONÁUTICA',
+    'CTLA','CENTRO DE TRANSPORTE LOGÍSTICO DA AERONÁUTICA','ALA 11','CIMAER','CENTRO INTEGRADO DE METEOROLOGIA AERONÁUTICA',
+    'CAE','CENTRO DE AQUISIÇÕES ESPECÍFICAS','COPE-S','CENTRO DE OPERAÇÕES ESPACIAIS SECUNDÁRIO'
+    'GSD-GL','GRUPO DE SEGURANÇA E DEFESA DO GALEÃO','HFAG', 'HOSPITAL DE FORÇA AÉREA DO GALEÃO']
+
 #print('O numero de OMs Apoiadas é: ', len(OMs))
 
 
@@ -34,11 +45,7 @@ def BuscaOMsApoiadas():
     while i < len(OMs):
       OM_procurada = re.findall(OMs[i],m)
       if OM_procurada != []:
-        print('A OM Apoiada: ',set(OM_procurada),'foi encontrada ',len(OM_procurada),' vez(es)', 'na página', numPage+1)
-        BuscaResult = f'''
-        OM Apoiada: {OM_procurada}
-        Página Encontrada: {numPage+1}'''
-        #texto_dinamico_teste['text'] = BuscaResult #Receberá o print da execução da função BuscaOMsApoiadas para mostrar o resultado em outra função ou botão do TKINTER
+        print('A OM Apoiada: ',set(OM_procurada),'foi encontrada ',len(OM_procurada),' vez(es)', 'na página', numPage+1)       
       i=i+1      
     j=j+1
 
@@ -54,9 +61,9 @@ def MarcaOMsApoiadas(*args):
           highlight = page.add_highlight_annot(j) #marca a palavra da lista de achadas
           print('Foi encontrada a palavra: ', highlight) #imprime a palavra marcada que eh um objeto da classe Fitz
     
-  BcadoDia.save("/content/drive/MyDrive/BCA/BcaMarcado.pdf")   
+  BcadoDia.save("bca_do_dia_marcado.pdf")
 
 
-MarcaOMsApoiadas("/content/drive/MyDrive/BCA/bca_do_dia.pdf")
+MarcaOMsApoiadas("bca_do_dia.pdf")
 
 
