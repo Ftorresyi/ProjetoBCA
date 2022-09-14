@@ -11,6 +11,7 @@ import re
 import fitz
 from datetime import date
 
+
 data_atual = str(date.today())
 
 #FUNÇÃO ALTERNATIVA PARA BUSCAR PALAVRAS EM UM PDF. USA A LIB PYPDF3
@@ -98,6 +99,8 @@ def removeHighlightv2(pdf_marcado, palavras_para_desmarcar):
               page.delete_annot(annot)
     
   BcadoDia.save("Bca_Lido_e_Marcado-"+data_atual+".pdf")
+  
+
 
 pdfmarcado=MarcaOMsApoiadas(input("Digite o nome do arquivo BCA que será lido, sem a extensão: ")+".pdf")
 removeHighlightv2('bca_do_dia_marcado.pdf', PalavrasChave)
