@@ -40,6 +40,8 @@ def BuscaOMsApoiadas(*args):
       i=i+1      
     j=j+1
 
+nBCA=input('Digite o número do BCA que será lido: ')
+#dataBCA=input('Digite a data do BCA: ')
 
 #LISTA DAS PALAVRAS QUE PRECISAM SER BUSCADAS NO PDF "bcadodia.PDF"
 OMs=[
@@ -61,7 +63,7 @@ OMs=[
     'GSD-GL','GRUPO DE SEGURANÇA E DEFESA DO GALEÃO','HFAG', 'HOSPITAL DE FORÇA AÉREA DO GALEÃO', 'MOVIMENTAÇÃO', 'PROMOÇÃO']
 
 #LISTA DAS PALAVRAS QUE DEVERÃO SER DESMARCADAS:
-PalavrasChave=['PORTARIA DIRAP','Subdiretor Interino de Pessoal Militar da Dirap']
+PalavrasChave=[' PORTARIA DIRAP ', ' da PORTARIA ', '\tPortaria Dirap n', '\nPortaria DIRAP n°', 'Subdiretor Interino de Pessoal Militar da Dirap']
 
 def MarcaOMsApoiadas(*args):
   BcadoDia = fitz.open(*args)
@@ -82,7 +84,7 @@ def MarcaOMsApoiadas(*args):
 #OBS: Isso está desmarcando os (DIRAP), não sei se era esse o objetivo
 def removeHighlightv2(pdf_marcado, palavras_para_desmarcar):
   BcadoDia = fitz.open(pdf_marcado)
-  
+  nannot=0
   for page in BcadoDia:
     #procuro pelas palavras que devem ser desmarcadas
     for palavra in palavras_para_desmarcar:
@@ -97,8 +99,9 @@ def removeHighlightv2(pdf_marcado, palavras_para_desmarcar):
             if (inst.intersect(annot.rect)):
               print("Remove anotacao ", palavra ," pg", page.number)
               page.delete_annot(annot)
-    
-  BcadoDia.save("Bca_Lido_e_Marcado-"+data_atual+".pdf")
+              nannot=nannot+1
+  print('Foram removidas ', nannot, ' anotações')
+  BcadoDia.save("Bca-"+nBCA+"_Marcado-"+data_atual+".pdf")
   
 
 
