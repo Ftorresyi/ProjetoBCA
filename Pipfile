@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 pypdf3 = "*"
-pymupdf = "*"
 pyinstaller = "*"
 
 [dev-packages]
