@@ -4,8 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pypdf3 = "*"
 pyinstaller = "*"
+PyMuPDF = "==1.18.19"
+re = "*"
+argparse="*"
+os = "*"
 
 [dev-packages]
 
